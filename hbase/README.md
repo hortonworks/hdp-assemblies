@@ -12,13 +12,13 @@ Checkout the repo and run the following:
 cd hbase && ./build_image.sh
 ```
 
-##Upload Hadoop configurations to HDFS:
+## Upload Hadoop configurations to HDFS
 ```
 hadoop fs -copyFromLocal /etc/hadoop/conf/core-site.xml .
 hadoop fs -copyFromLocal /etc/hadoop/conf/hdfs-site.xml .
 ```
 
-##Launch the app through the YARN Services API
+## Launch the app through the YARN Services API
 ```
 yarn app -launch hbase hbase/Yarnfile
 ```

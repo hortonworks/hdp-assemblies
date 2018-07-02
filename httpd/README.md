@@ -12,12 +12,12 @@ Checkout the repo and run the following:
 cd httpd && ./build_image.sh
 ```
 
-## Upload the HTTPD Proxy Configuration to HDFS:
+## Upload the HTTPD Proxy Configuration to HDFS
 ```
 hdfs dfs -copyFromLocal ${HADOOP_YARN_HOME}/share/hadoop/yarn/yarn-service-examples/httpd/httpd-proxy.conf .
 ```
 
-## Launch the app through the YARN Services API:
+## Launch the app through the YARN Services API
 ```
 yarn app -launch httpd httpd/Yarnfile
 ```

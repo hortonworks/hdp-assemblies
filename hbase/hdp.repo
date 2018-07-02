@@ -1,0 +1,17 @@
+#VERSION_NUMBER=3.0.0.0-1485
+[HDP-3.0.0.0-1485]
+name=HDP Version - HDP-3.0.0.0-1485
+baseurl=http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos7/3.x/BUILDS/3.0.0.0-1485
+gpgcheck=1
+gpgkey=http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos7/3.x/BUILDS/3.0.0.0-1485/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
+
+
+[HDP-UTILS-1.1.0.22]
+name=HDP-UTILS Version - HDP-UTILS-1.1.0.22
+baseurl=http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.22/repos/centos7
+gpgcheck=1
+gpgkey=http://s3.amazonaws.com/dev.hortonworks.com/HDP/centos7/3.x/updates/3.0.0.0/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1

@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+export HADOOP_HDFS_HOME=<TODO: Provide HDFS Home DIR inside Docker image>
+
+# Intentionally leave HADOOP_HOME and HADOOP_YARN_HOME empty
+export HADOOP_HOME=
+export HADOOP_YARN_HOME=
+
+# Setup $HADOOP_CONF_DIR, by default submit_tf_job.py mounts cluster
+# Hadoop configs to /etc/hadoop/conf
+export HADOOP_CONF_DIR=/etc/hadoop/conf
+
+export JAVA_HOME=<TODO: JAVA_HOME inside Docker image>
+export CLASSPATH=`$HADOOP_HDFS_HOME/bin/hadoop classpath --glob`:$HADOOP_CONF_DIR
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${JAVA_HOME}/jre/lib/amd64/server

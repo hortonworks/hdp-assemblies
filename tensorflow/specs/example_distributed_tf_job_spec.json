@@ -1,0 +1,66 @@
+
+{
+  "name": "distributed-tf",
+  "version": "1.0.0",
+  "components": [
+    {
+      "name": "master",
+      "dependencies": [],
+      "resource": {
+        "cpus": 1,
+        "memory": "4096",
+        "additional" : {
+          "yarn.io/gpu" : {
+            "value" : 2
+          }
+        }
+      },
+      "launch_command": "cd /test/cifar10_estimator && python cifar10_main.py --data-dir=hdfs://default/tmp/cifar-10-data --job-dir=hdfs://default/tmp/cifar-10-jobdir --train-steps=10000 --eval-batch-size=16 --train-batch-size=16 --sync --num-gpus=2",
+      "number_of_containers": 1
+    },
+    {
+      "name": "worker",
+      "dependencies": [],
+      "resource": {
+        "cpus": 1,
+        "memory": "4096",
+        "additional" : {
+          "yarn.io/gpu" : {
+            "value" : 2
+          }
+        }
+      },
+      "launch_command": "cd /test/cifar10_estimator && python cifar10_main.py --data-dir=hdfs://default/tmp/cifar-10-data --job-dir=hdfs://default/tmp/cifar-10-jobdir --train-steps=10000 --eval-batch-size=16 --train-batch-size=16 --sync --num-gpus=2",
+      "number_of_containers": 1
+    },
+    {
+      "name": "ps",
+      "dependencies": [],
+      "resource": {
+        "cpus": 1,
+        "memory": "2048"
+      },
+      "launch_command": "cd /test/cifar10_estimator && python cifar10_main.py --data-dir=hdfs://default/tmp/cifar-10-data --job-dir=hdfs://default/tmp/cifar-10-jobdir --num-gpus=0",
+      "number_of_containers": 1
+    },
+    {
+      "name": "tensorboard",
+      "dependencies": [],
+      "resource": {
+        "cpus": 4,
+        "memory": "8192"
+      },
+      "launch_command": "export LC_ALL=C && tensorboard --logdir=hdfs://default/tmp/cifar-10-jobdir",
+      "number_of_containers": 1
+    }
+  ],
+  "configuration": {
+    "properties": {},
+    "env": {
+    }
+  },
+  "kerberos_principal" : {
+    "principal_name" : "test-user@EXAMPLE.COM",
+    "keytab" : "file:///etc/security/keytabs/test-user.headless.keytab"
+  }
+}

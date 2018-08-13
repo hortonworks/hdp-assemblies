@@ -14,7 +14,7 @@ cd httpd && ./build_image.sh
 
 ## Upload the HTTPD Proxy Configuration to HDFS
 ```
-hdfs dfs -copyFromLocal ${HADOOP_YARN_HOME}/share/hadoop/yarn/yarn-service-examples/httpd/httpd-proxy.conf .
+hdfs dfs -copyFromLocal /usr/hdp/current/hadoop-yarn-client/yarn-service-examples/httpd/httpd-proxy.conf .
 ```
 
 ## Launch the app through the YARN Services API
